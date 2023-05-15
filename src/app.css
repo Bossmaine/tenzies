@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(130, 148, 148);
+    margin: 0;
+    height: 100vh;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    background-color: #f5f5f5 ;
+    height: 80vh;
+    max-width: 600px;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.dice-container {
+    display: grid; 
+    grid-template: auto auto / repeat(5, 1fr);
+    gap: 10px;
+}
+
+.dice-box {
+    height: 50px;
+    width: 50px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dice-box h2 {
+    font-size: 1.7rem;
+}
+
+.roll-dice {
+    width: 130px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(130, 148, 148);
+    margin-top: 40px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+}
+
+.roll-dice:active {
+    background-color: rgb(112, 148, 148);
+    color: #666;
+    box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+
+@media (max-width: 576px) {
+    br {
+       display: none; 
+    }
+}
