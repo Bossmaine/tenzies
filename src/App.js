@@ -1,6 +1,6 @@
 import './app.css'
 import Die from './Die';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { nanoid } from 'nanoid';
 import Confetti from 'react-confetti'
 import TenziesAudio from './audio/Mortuna Avenue.m4a'
@@ -9,6 +9,9 @@ function App() {
 
   const [die, setDie] = useState(newDie());
   const [won, setWon] = useState(false); 
+
+  const audioRef = useRef(null);
+
 
   function newDie() {
     const dieArray = []
@@ -48,10 +51,11 @@ function App() {
     const allChosen = die.every(die => die.isChosen);
     const val = die[0].value;
     const allSame = die.every(die => val === die.value)
-    if(allChosen && allSame) {
+    if (allChosen && allSame && !won) {
       setWon(true);
+      audioRef.current.play();
     }
-  }, [die])
+  },  [die, audioRef, won])
 
 
   const dice = die.map((die) => {
@@ -69,11 +73,7 @@ return (
         won && <Confetti
           />
       }
-      {
-        won && (
-          <audio src={TenziesAudio} autoPlay></audio>
-        )
-      }
+      <audio ref={audioRef} src={TenziesAudio} autoPlay />
       <h1>Tenzies</h1>
       <p>Roll dice until you are able to hold the same <strong>10</strong> numbers! <br /> 
         Click dice to hold!
